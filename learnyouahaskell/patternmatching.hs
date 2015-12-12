@@ -22,3 +22,23 @@ movieRating rating
   | rating < 10  = "Bloody good!"
   | rating == 10 = "Amazebombs"
   | otherwise    = "You can't code"
+
+yearlyRent :: (RealFloat a) => a -> a -> a
+yearlyRent weeklyAmount weeklyDiscount =
+  let weeksInYear = 52
+      subTotal = weeklyAmount * weeksInYear
+      totalDiscount = weeklyDiscount * weeksInYear
+  in  subTotal - totalDiscount
+
+data Name = Name String deriving(Show)
+data Price = Price Int deriving(Show)
+data Discount = Discount Int deriving(Show)
+data Product = Product Name Price Discount deriving(Show)
+data Quantity = Quantity Int deriving(Show)
+
+costOf :: Product -> Quantity -> Int
+costOf (Product _ (Price p) (Discount d)) (Quantity q) = total - fullDiscount
+  where total = p * q
+        fullDiscount = d * q
+
+  
