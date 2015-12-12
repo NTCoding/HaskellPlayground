@@ -41,4 +41,11 @@ costOf (Product _ (Price p) (Discount d)) (Quantity q) = total - fullDiscount
   where total = p * q
         fullDiscount = d * q
 
+costOfLet :: Product -> Quantity -> Int
+costOfLet (Product _ (Price p) (Discount d)) (Quantity q) = 
+  let total = p * q
+      discount = d * q
+  in  total - discount    
+
+
   
