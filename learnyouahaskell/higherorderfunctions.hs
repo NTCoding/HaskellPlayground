@@ -34,5 +34,8 @@ collatz n =
   case n `mod` 2 of 0 -> n : collatz (n `div` 2)
                     1 -> n : collatz ((n * 3) + 1)
 
+sumEvens :: [Int] -> Int
+sumEvens xs = foldl (\acc x -> if (x `mod` 2 == 0) then acc + x else acc) 0 xs
+
 
   
